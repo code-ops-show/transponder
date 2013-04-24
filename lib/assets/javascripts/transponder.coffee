@@ -1,9 +1,9 @@
-#= require setup
-#= require error
-#= require request
-#= require presenter
-#= require service
-#= require init
+#= require transponder/setup
+#= require transponder/error
+#= require transponder/request
+#= require transponder/presenter
+#= require transponder/service
+#= require transponder/init
 
 
 
