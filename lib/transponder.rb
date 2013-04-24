@@ -1,5 +1,7 @@
-require "transponder/version"
+require 'transponder/version'
 
 module Transponder
-  # Your code goes here...
+  module Rails
+    require 'transponder/engine'
+  end
 end
