@@ -1,4 +1,4 @@
-ready = ->
+service_manifest = ->
   # fill in your manifest here
   # example:
   # if you want to trigger a service on your entire app
