@@ -9,7 +9,7 @@ service_manifest = ->
   # in your views/layouts/application.html.erb
   # on your body tag you can do something like this
   #
-  # <body class="<%= controller_name %> <%= action_name %>">
+  # <body class="[controller_name] [action_name]">
   #
   # You now have a more fine grained control in 
   # your manifest file

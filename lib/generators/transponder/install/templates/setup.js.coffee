@@ -1,4 +1,4 @@
-window.<%= application_name.titleize %> =
+window.<%= application_name.camelize %> =
   Helpers: {}
   Services: {}
   Presenters: {}

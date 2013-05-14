@@ -13,5 +13,6 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/zacksiri/transponder"
   gem.files         = Dir["lib/assets/javascripts/*.coffee", "lib/transponder.rb", "README.md", "LICENSE.txt"]
 
-  gem.add_dependency 'coffee-rails'
+  gem.add_development_dependency 'coffee-rails'
+  gem.add_development_dependency 'rails', '~> 3.2.13'
 end
