@@ -1,7 +1,8 @@
 class Transponder.Service
-  serviceName: ''
+  serviceName: null
 
   constructor: ->
+    throw new Transponder.InvalidService('no service name specified.') unless @serviceName?
     _this = this
     $(document).on _this.serviceName, (e) ->
       service = _this.serviceName.split(':').pop()

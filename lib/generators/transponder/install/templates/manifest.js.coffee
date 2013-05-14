@@ -1,4 +1,4 @@
-service_manifest = ->
+window.service_manifest = ->
   # fill in your manifest here
   # example:
   # if you want to trigger a service on your entire app
@@ -19,3 +19,7 @@ service_manifest = ->
   # $('body.posts.show,
   #    body.dashboard.show,
   #    body.photos.index').trigger 'app_name:services:service_name'
+  # 
+  # in your document.ready call service_manifest()
+  # $(document).ready ->
+  #   service_manifest()
