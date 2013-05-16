@@ -1,5 +1,5 @@
 class Transponder.Presenter
-  defaultActions: ['new', 'index', 'show', 'update', 'edit', 'create', 'destroy']
+  actions: ['new', 'index', 'show', 'update', 'edit', 'create', 'destroy']
   params: {}
 
   presenterName: null
@@ -12,7 +12,7 @@ class Transponder.Presenter
   constructor: (options = {}) ->
     options.presenterName = @presenterName  unless options.presenterName
     options.nameSpace =     @nameSpace      unless options.nameSpace
-    options.actions =       @defaultActions unless options.actions
+    options.actions =       @actions        unless options.actions
 
     doc = $(document)
     events = []
