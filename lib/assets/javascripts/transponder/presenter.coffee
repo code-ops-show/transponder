@@ -43,7 +43,7 @@ class Transponder.Presenter
 
 
   triggerEmpty: (eventName) ->
-    console.log "#{eventName} triggered! Override this action in your own controller"
+    console.log "#{eventName} triggered! Override this action in your own presenter"
 
   errorOut: ->
     console.log "an error has occured!"
