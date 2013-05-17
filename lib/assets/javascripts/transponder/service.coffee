@@ -6,7 +6,7 @@ class Transponder.Service
     _this = this
     $(document).on _this.serviceName, (e) ->
       service = _this.serviceName.split(':').pop()
-      $(".#{service}:not(#{service}_active").each ->
+      $(".#{service}:not(#{service}_active)").each (i, e) ->
         $(this).addClass("#{service}_active")
         _this.serve()
 

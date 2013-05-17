@@ -20,6 +20,9 @@ Transponder.services_manifest = ->
   #    body.dashboard.show,
   #    body.photos.index').trigger 'app_name:services:service_name'
   # 
-  
-jQuery ->
+
+run_ready = ->
   Transponder.services_manifest()
+
+$(document).ready run_ready
+$(document).on 'page:load', run_ready
