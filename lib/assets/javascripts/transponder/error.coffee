@@ -10,3 +10,8 @@ class Transponder.Error
       @response = JSON.parse(xhr.responseText) 
       eventType = Transponder.buildEvent ['ujs', @response.namespace, @response.controller, @response.action]
       $(document).trigger(eventType, @response)
+
+class Transponder.InvalidService
+  constructor: (message) ->   
+    @message = message
+    @name = "InvalidService"

@@ -10,10 +10,8 @@ Gem::Specification.new do |gem|
   gem.email         = ["zack@artellectual.com"]
   gem.description   = %q{A Cleaner way of working with rails frontend code}
   gem.summary       = %q{This library gives you more control over rails ujs, it compliments turbolinks, and any other library you use. It is opinionated and helps you clean up your client side code in many ways.}
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/zacksiri/transponder"
+  gem.files         = Dir["lib/assets/javascripts/*.coffee", "lib/transponder.rb", "README.md", "LICENSE.txt"]
 
-  gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  gem.add_development_dependency 'coffee-rails'
 end

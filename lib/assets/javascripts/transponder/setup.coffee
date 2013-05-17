@@ -6,6 +6,3 @@ window.Transponder =
   init: ->
     Transponder.eh = new Transponder.Error()
     Transponder.req = new Transponder.Request()
-
-
-new Transponder.init()

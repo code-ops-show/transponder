@@ -1,0 +1,14 @@
+Description:
+  The transponder:install will generate the services, presenters 
+  and helpers folder in your assets/javascripts directory, 
+  it will also generate a manifest and setup file with your 
+  application name usually app_name.js.coffee
+
+Output:
+    rails generate transponder:install
+
+        Services:   app/assets/javascripts/services
+        Presenters: app/assets/javascripts/presenters
+        Helper:     app/assets/javascripts/helpers
+        Setup:      app/assets/javascripts/app_name-setup.js.coffee
+        Manifest:   app/assets/javascripts/app_name-manifest.js.coffee
