@@ -3,10 +3,6 @@ before_install:
 
 install:
   - npm install
-  - bundle install
-
-before_script:
-  - middleman build
 
 script: npm test
 
