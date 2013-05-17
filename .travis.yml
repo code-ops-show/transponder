@@ -3,7 +3,7 @@ before_install:
 
 install:
   - npm install
-  - bundle install --gemfile Gemfile
+  - bundle install
 
 before_script:
   - bundle exec middleman build
