@@ -5,5 +5,9 @@ install:
   - npm install
   - bundle install
 
-script: "bundle exec middleman build; npm test" 
+before_script:
+  - pwd
+  - bundle exec middleman build 
+
+script: npm test
 
