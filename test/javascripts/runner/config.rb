@@ -47,6 +47,7 @@
 #   end
 # end
 
+
 after_configuration do
   sprockets.append_path "#{root}/../../../lib/assets/javascripts"
   sprockets.append_path "#{root}/../../../test/javascripts"
