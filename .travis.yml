@@ -6,7 +6,9 @@ install:
   - bundle install
 
 before_script:
-  - bundle exec middleman build
+  - cd test/javascripts/runner
 
-script: npm test
+script:
+  - bundle exec middleman build 
+  - npm test
 
