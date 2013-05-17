@@ -14,6 +14,4 @@ Gem::Specification.new do |gem|
   gem.files         = Dir["lib/**/*", "[A-Z]*"]
 
   gem.add_dependency 'coffee-rails'
-
-  gem.add_development_dependency 'rails', '>= 3.2'
 end
