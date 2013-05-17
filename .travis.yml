@@ -1,0 +1,10 @@
+install:
+  - npm install mocha-phantomjs
+  - gem install middleman
+
+before_script:
+  - cd test/javascripts/runner
+  - middleman build
+
+script: npm test
+
