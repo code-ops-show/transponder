@@ -2,6 +2,8 @@
 
 TODO: Write a gem description
 
+[![Build Status](https://www.travis-ci.org/zacksiri/transponder.png?branch=develop)](https://www.travis-ci.org/zacksiri/transponder)
+
 ## Installation
 
 Add this line to your application's Gemfile:
