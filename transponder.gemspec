@@ -14,5 +14,5 @@ Gem::Specification.new do |gem|
   gem.files         = Dir["lib/**/*", "[A-Z]*"]
   gem.require_path  = "lib"
 
-  gem.add_development_dependency 'coffee-rails'
+  gem.add_development_dependency 'middleman', '~> 3.0.14'
 end
