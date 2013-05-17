@@ -14,5 +14,6 @@ Gem::Specification.new do |gem|
   gem.files         = Dir["lib/**/*", "[A-Z]*"]
   gem.require_path  = "lib"
 
+  gem.add_development_dependency 'rails', "~> 3.2.13"
   gem.add_development_dependency 'middleman', '~> 3.0.14'
 end
