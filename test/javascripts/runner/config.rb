@@ -54,7 +54,6 @@ after_configuration do
   sprockets.append_path "#{root}/../../../examples"
 end
 
-
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
