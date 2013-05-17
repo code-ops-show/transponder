@@ -3,7 +3,7 @@ before_install:
 
 install:
   - npm install
-  - bundle install --gemfile test/javascripts/runner/Gemfile
+  - bundle install --gemfile Gemfile
 
 before_script:
   - middleman build
