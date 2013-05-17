@@ -1,4 +1,4 @@
-#= require ../../support/examples_presenter
+#= require presenters/examples_presenter
 
 describe "ExamplesPresenter", ->
   before ->
