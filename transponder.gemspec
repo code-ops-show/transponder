@@ -13,4 +13,6 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/zacksiri/transponder"
   gem.files         = Dir["lib/**/*", "[A-Z]*"]
   gem.require_path  = "lib"
+
+  gem.add_development_dependency 'coffee-rails'
 end
