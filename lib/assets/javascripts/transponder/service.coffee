@@ -1,5 +1,6 @@
 class Transponder.Service
   serviceName: null
+  element: null
 
   constructor: ->
     throw new Transponder.InvalidService('no service name specified.') unless @serviceName?
@@ -7,7 +8,8 @@ class Transponder.Service
     $(document).on _this.serviceName, (e) ->
       service = _this.serviceName.split(':').pop()
       $(".#{service}:not(#{service}_active)").each (i, e) ->
-        $(this).addClass("#{service}_active")
+        _this.element = $(this)
+        _this.element.addClass("#{service}_active")
         _this.serve()
 
   serve: ->
