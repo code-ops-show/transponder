@@ -5,10 +5,5 @@ install:
   - npm install
   - bundle install
 
-before_script:
-  - cd test/javascripts/runner
-
-script:
-  - bundle exec middleman build 
-  - npm test
+script: "bundle exec middleman build; npm test" 
 
