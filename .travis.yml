@@ -1,8 +1,12 @@
 install:
   - npm install mocha-phantomjs
+  - gem install middleman
+  - gem install coffee-rails
+  - bundle
 
 before_script:
   - cd test/javascripts/runner
+  - bundle exec middleman build
 
 script: npm test
 
