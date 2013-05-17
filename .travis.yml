@@ -6,7 +6,7 @@ install:
   - bundle install --gemfile Gemfile
 
 before_script:
-  - middleman build
+  - bundle exec middleman build
 
 script: npm test
 
