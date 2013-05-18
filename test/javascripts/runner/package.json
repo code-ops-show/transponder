@@ -1,0 +1,22 @@
+{
+  "name": "runner",
+  "version": "0.0.5",
+  "description": "test runner for transponder",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha-phantomjs -R dot /build/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "zacksiri/transponder"
+  },
+  "keywords": [
+    "js",
+    "front-end"
+  ],
+  "author": "Zack Siri",
+  "license": "BSD",
+  "devDependencies": {
+    "mocha-phantomjs": "~2.0.2"
+  }
+}

@@ -1,0 +1,10 @@
+before_install:
+  - cd test/javascripts/runner
+
+install:
+  - npm install
+  - bundle install
+  - bundle exec middleman build
+
+script: npm test
+

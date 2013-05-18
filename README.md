@@ -1,6 +1,9 @@
 # Transponder
 
+[![Build Status](https://www.travis-ci.org/zacksiri/transponder.png?branch=develop)](https://www.travis-ci.org/zacksiri/transponder)
+
 TODO: Write a gem description
+
 
 ## Installation
 

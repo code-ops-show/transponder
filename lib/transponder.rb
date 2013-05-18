@@ -1,7 +1,7 @@
 require 'transponder/version'
+require 'rails'
 
 module Transponder
-  module Rails
-    require 'transponder/engine'
+  class Engine < Rails::Engine
   end
 end
