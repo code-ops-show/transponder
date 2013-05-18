@@ -1,9 +1,8 @@
 # Transponder
+[![Build Status](https://www.travis-ci.org/zacksiri/transponder.png?branch=master)](https://www.travis-ci.org/zacksiri/transponder) - Master (current release)
+[![Build Status](https://www.travis-ci.org/zacksiri/transponder.png?branch=develop)](https://www.travis-ci.org/zacksiri/transponder) - Develop (next release)
 
-[![Build Status](https://www.travis-ci.org/zacksiri/transponder.png?branch=develop)](https://www.travis-ci.org/zacksiri/transponder)
-
-TODO: Write a gem description
-
+Transponder is a opinionated javascript library for assisting in working with front end heavy rails app.
 
 ## Installation
 
