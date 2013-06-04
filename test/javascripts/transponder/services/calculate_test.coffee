@@ -15,15 +15,9 @@ describe "Calculate", ->
       expect(@service.result).to.equal(400)
 
   describe "#serve", ->
-    before (done) ->
-      $.ajax
-        url: 'fixtures/calculate.html'
-        dataType: 'html'
-        success: (data, textStatus, jqXhr) ->
-          $('#fixtures').append(data)
-          $('#fixtures').trigger('ex:services:calculate')
-          done()
-
+    before ->
+      $('#fixtures').html("<div class='calculate'><span class='result'></span></div>")
+      $('#fixtures').trigger('ex:services:calculate')
     after ->
       $('#fixtures').empty()
 
