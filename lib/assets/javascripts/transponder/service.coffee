@@ -5,7 +5,7 @@ class Transponder.Service
   constructor: ->
     throw new Transponder.InvalidService('no service name specified.') unless @serviceName?
     _this = this
-    $(window).on _this.serviceName, (e) ->
+    $(document).on _this.serviceName, (e) ->
       service = _this.serviceName.split(':').pop()
       $(".#{service}:not(#{service}_active)").each (i, e) ->
         _this.element = $(this)
