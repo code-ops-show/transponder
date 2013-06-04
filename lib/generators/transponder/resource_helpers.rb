@@ -2,7 +2,6 @@ module Transponder
   module Generators
     module ResourceHelpers
 
-
       def js_app_name
         application_name.downcase
       end
