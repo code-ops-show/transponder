@@ -26,7 +26,7 @@ Once installing the gem run.
 
 ## Slides
     
-    [a link](http://www.slideshare.net/artellectual/better-ujsforrails)
+    [Slides]: http://www.slideshare.net/artellectual/better-ujsforrails
 
 ## TODO - Whats Coming
 
