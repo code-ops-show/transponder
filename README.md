@@ -26,7 +26,15 @@ Once installing the gem run.
 
 ## Slides
     
-    [Slides](http://www.slideshare.net/artellectual/better-ujsforrails)
+    (Slides)[http://www.slideshare.net/artellectual/better-ujsforrails]
+
+## TODO - Whats Coming
+
+  + Clean up some APIs
+  + Add Documentation
+  + Video Screencasts
+  + More Generators
+  + Example Rails Project
 
 ## Contributing
 
