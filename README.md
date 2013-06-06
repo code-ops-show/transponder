@@ -20,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Once installing the gem run.
+
+    $ rails g transponder:install
+
+## Slides
+    
+    [Slides](http://www.slideshare.net/artellectual/better-ujsforrails)
 
 ## Contributing
 
