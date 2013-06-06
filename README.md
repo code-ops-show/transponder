@@ -24,9 +24,8 @@ Once installing the gem run.
 
     $ rails g transponder:install
 
-## Slides
-    
-    [Slides]: http://www.slideshare.net/artellectual/better-ujsforrails
+## Documentation
+[Slides]: http://www.slideshare.net/artellectual/better-ujsforrails
 
 ## TODO - Whats Coming
 
