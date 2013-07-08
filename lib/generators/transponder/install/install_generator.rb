@@ -23,11 +23,11 @@ module Transponder
       end
 
       def add_setup
-        template 'initializers/setup.coffee',  'app/assets/javascripts/initializers/setup.coffee'
+        template 'initializers/setup.coffee',    'app/assets/javascripts/initializers/setup.coffee'
       end 
 
       def add_manifest
-        template 'initializers/manifest.coffee', "app/assets/javascripts/initializers/manifest.coffee"
+        template 'initializers/manifest.coffee', 'app/assets/javascripts/initializers/manifest.coffee'
       end
     end
   end
