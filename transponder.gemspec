@@ -11,7 +11,8 @@ Gem::Specification.new do |gem|
   gem.description   = %q{A Cleaner way of working with rails frontend code}
   gem.summary       = %q{This library gives you more control over rails ujs, it compliments turbolinks, and any other library you use. It is opinionated and helps you clean up your client side code in many ways.}
   gem.homepage      = "http://github.com/zacksiri/transponder"
-  gem.files         = Dir["lib/**/*", "[A-Z]*"]
+  gem.files         = `git ls-files -- lib/*`.split("\n")
+  gem.files         += %w[README.md]
   gem.test_files    = Dir["test/**/*"]
 
   gem.add_dependency 'coffee-rails', '>= 3.2'
