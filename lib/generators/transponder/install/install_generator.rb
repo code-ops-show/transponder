@@ -21,14 +21,6 @@ module Transponder
       def create_initializers
         directory 'initializers', 'app/assets/javascripts/initializers'
       end
-
-      def add_setup
-        template 'initializers/setup.coffee',    'app/assets/javascripts/initializers/setup.coffee'
-      end 
-
-      def add_manifest
-        template 'initializers/manifest.coffee', 'app/assets/javascripts/initializers/manifest.coffee'
-      end
     end
   end
 end
