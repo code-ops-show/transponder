@@ -7,23 +7,27 @@ module Transponder
       include Transponder::Generators::ResourceHelpers
 
       def create_services
-        directory 'services', 'app/assets/javascripts/services'
+        directory 'services',     'app/assets/javascripts/services'
       end
 
       def create_presenters
-        directory 'presenters', 'app/assets/javascripts/presenters'
+        directory 'presenters',   'app/assets/javascripts/presenters'
       end
 
       def create_helpers
-        directory 'helpers', 'app/assets/javascripts/helpers'
+        directory 'helpers',      'app/assets/javascripts/helpers'
+      end
+
+      def create_initializers
+        directory 'initializers', 'app/assets/javascripts/initializers'
       end
 
       def add_setup
-        template 'setup.coffee', "app/assets/javascripts/#{js_app_name}-setup.coffee"
+        template 'setup.coffee',    'app/assets/javascripts/initializers/setup.coffee'
       end 
 
       def add_manifest
-        template 'manifest.coffee', "app/assets/javascripts/#{js_app_name}-manifest.coffee"
+        template 'manifest.coffee', 'app/assets/javascripts/initializers/manifest.coffee'
       end
     end
   end

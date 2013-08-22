@@ -1,6 +1,6 @@
 window.Transponder =
   buildEvent: (array) ->
-    eventType = array.filter (val) -> val != null
+    eventType = array.filter (val) -> typeof val isnt 'undefined' and val isnt null
     eventType.join(':')
 
   init: ->
