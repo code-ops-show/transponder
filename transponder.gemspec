@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files -- lib/*`.split("\n")
   gem.files         += %w[README.md LICENSE.txt]
   gem.test_files    = Dir["test/**/*"]
+  # add license
   gem.license       = "MIT"
 
   gem.add_dependency 'coffee-rails', '>= 3.2'
