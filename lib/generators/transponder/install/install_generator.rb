@@ -11,7 +11,7 @@ module Transponder
       end
 
       def add_setup
-        template "#{options[:type]}.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
+        template "#{options[:type]}_setup.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
       end
 
       def add_manifest
