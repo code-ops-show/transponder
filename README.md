@@ -1,6 +1,6 @@
 # Transponder
-[![Build Status](https://www.travis-ci.org/artellectual/transponder.png?branch=master)](https://www.travis-ci.org/artellectual/transponder) - Master (current release)
-[![Build Status](https://travis-ci.org/artellectual/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder)
+[![Build Status](https://travis-ci.org/artellectual/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) - Master (current release)
+[![Build Status](https://travis-ci.org/artellectual/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) - Develop (upcoming release)
 
 Transponder is a opinionated javascript library for assisting in working with front end heavy rails app.
 
