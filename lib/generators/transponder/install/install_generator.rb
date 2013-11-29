@@ -3,7 +3,7 @@ require 'generators/transponder'
 module Transponder
   module Generators
     class InstallGenerator < Base
-      class_option :type,   type: :string, default: 'basic', desc: "type of app to generate"
+      class_option :type,   type: :string, default: 'basic', desc: "Type of app to generate", aliases: "-t"
       class_option :shared, type: :boolean, default: false
  
       def create_application
