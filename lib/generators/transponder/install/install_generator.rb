@@ -19,6 +19,10 @@ module Transponder
         template "manifest.coffee", "app/assets/javascripts/#{file_name}/initializers/manifest.coffee" unless options[:shared]
       end
 
+      def add_shared
+        template "#{app_type}_shared.coffee", "app/assets/javascripts/#{file_name}/#{file_name}.coffee" if options[:shared]
+      end
+
       def add_application
         template "#{app_type}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
