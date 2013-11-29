@@ -3,7 +3,8 @@ require 'generators/transponder'
 module Transponder
   module Generators
     class InstallGenerator < Base
-      class_option :full, type: :boolean, default: false
+      class_option :full,   type: :boolean, default: false
+      class_option :shared, type: :boolean, default: false
  
       def create_application
         directory "#{app_type}",     "app/assets/javascripts/#{file_name}"
