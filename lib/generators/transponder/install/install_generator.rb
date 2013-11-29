@@ -15,8 +15,12 @@ module Transponder
         template "#{setup_type}.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
       end
 
+      def add_manifest
+        template "manifest.coffee", "app/assets/javascripts/#{file_name}/initializers/manifest.coffee" unless options[:shared]
+      end
+
       def add_application
-        template "#{app_type}.coffee", "app/assets/javascripts/#{file_name}.coffee"
+        template "#{app_type}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
 
       def app_type
