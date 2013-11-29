@@ -7,7 +7,7 @@ module Transponder
       include Transponder::Generators::ResourceHelpers
 
       def create_application
-        directory 'appliation',     'app/assets/javascripts/application'
+        directory 'application',     'app/assets/javascripts/application'
       end
 
       def add_application
