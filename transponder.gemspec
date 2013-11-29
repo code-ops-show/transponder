@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["zack@artellectual.com"]
   gem.description   = %q{A Cleaner way of working with rails frontend code}
   gem.summary       = %q{This library gives you more control over rails ujs, it compliments turbolinks, and any other library you use. It is opinionated and helps you clean up your client side code in many ways.}
-  gem.homepage      = "http://github.com/zacksiri/transponder"
+  gem.homepage      = "http://github.com/artellectual/transponder"
   gem.files         = `git ls-files -- lib/*`.split("\n")
   gem.files         += %w[README.md LICENSE.txt]
   gem.test_files    = Dir["test/**/*"]
