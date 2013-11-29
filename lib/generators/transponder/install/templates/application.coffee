@@ -5,9 +5,9 @@
 #= require transponder
 
 # this part boots up the transponder app
-#= require application/initializers/setup
-#= require_tree ./application/services
-#= require_tree ./application/helpers
-#= require_tree ./application/presenters
-#= require application/initializers/boot
-#= require application/initializers/manifest
+#= require <%= file_name %>/initializers/setup
+#= require_tree ./<%= file_name %>/services
+#= require_tree ./<%= file_name %>/helpers
+#= require_tree ./<%= file_name %>/presenters
+#= require <%= file_name %>/initializers/boot
+#= require <%= file_name %>/initializers/manifest
