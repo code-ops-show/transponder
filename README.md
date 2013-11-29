@@ -23,7 +23,7 @@ Or install it yourself as:
 There are 3 types of transponder module, minimal, basic, full by using the ```-t``` flag you can specify which type you want to use. If you don't specify a ```-t``` flag it will generate a basic module.
 
 ### Minimal
-Minimal transponder modules are good for generating modules that will contain only services that will be used by other modules. Generally recommended to use in combination with the ```--shared`` flag
+Minimal transponder modules are good for generating modules that will contain only services that will be used by other modules. Generally recommended to use in combination with the ```--shared``` flag
 
     $ rails g transponder:install utilities -t minimal --shared
 
