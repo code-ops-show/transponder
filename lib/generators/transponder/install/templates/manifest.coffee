@@ -2,7 +2,7 @@ Transponder.services_manifest = ->
   # fill in your manifest here
   # example:
   # if you want to trigger a service on your entire app
-  # $('body').trigger '<%= full_name.downcase %>:services:service_name'
+  # $('body').trigger '<%= file_name.downcase %>:services:service_name'
   # 
   # If you want a more fine grained control for 
   # different pages you can add a class to your body 
@@ -13,12 +13,12 @@ Transponder.services_manifest = ->
   #
   # You now have a more fine grained control in 
   # your manifest file
-  # $('body.posts.show').trigger '<%= full_name.downcase %>:services:service_name'
+  # $('body.posts.show').trigger '<%= file_name.downcase %>:services:service_name'
   #
   # if you need to trigger the same services on multiple pages
   # $('body.posts.show,
   #    body.dashboard.show,
-  #    body.photos.index').trigger '<%= full_name.downcase %>:services:service_name'
+  #    body.photos.index').trigger '<%= file_name.downcase %>:services:service_name'
   # 
 
 run_ready = ->
