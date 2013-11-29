@@ -2,7 +2,7 @@ Transponder.services_manifest = ->
   # fill in your manifest here
   # example:
   # if you want to trigger a service on your entire app
-  # $('body').trigger 'application:services:service_name'
+  # $('body').trigger 'app_name:services:service_name'
   # 
   # If you want a more fine grained control for 
   # different pages you can add a class to your body 

@@ -1,4 +1,5 @@
-require 'rails/generators/base'
+require 'rails/generators'
+require 'rails/generators/named_base'
 
 module Transponder
   module Generators
