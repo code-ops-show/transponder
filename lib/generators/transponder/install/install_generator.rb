@@ -6,7 +6,7 @@ module Transponder
       class_option :type,   type: :string, default: 'basic', desc: "type of app to generate", aliases: "-t"
       class_option :shared, type: :boolean, default: false
  
-      def create_application
+      def create_module
         directory "#{options[:type]}",     "app/assets/javascripts/#{file_name}"
       end
 
@@ -22,7 +22,7 @@ module Transponder
         template "#{options[:type]}_shared.coffee", "app/assets/javascripts/#{file_name}/#{file_name}.coffee" if options[:shared]
       end
 
-      def add_application
+      def add_module_file
         template "#{options[:type]}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
     end
