@@ -5,5 +5,5 @@ gemspec
 
 group :test do 
   gem 'middleman', '~> 3.0.14'
-  gem 'haml', '~> 4.0.4'
+  gem 'haml', '4.0.2'
 end
