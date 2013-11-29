@@ -1,5 +1,4 @@
 require 'generators/transponder'
-require 'generators/transponder/resource_helpers'
 
 module Transponder
   module Generators
