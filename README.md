@@ -26,6 +26,7 @@ Once installing the gem run.
     $ rails g transponder:install application
 
 or 
+
     $ rails g transponder:install application --full
 
 You may be wondering whats the difference between the one with ```--full``` and the one without
