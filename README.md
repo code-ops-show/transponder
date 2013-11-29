@@ -20,18 +20,24 @@ Or install it yourself as:
     $ gem install transponder
 
 ## Usage
+There are 3 types of transponder module, minimal, basic, full by using the ```-t``` flag you can specify which type you want to use. If you don't specify a ```-t``` flag it will generate a basic module.
 
-Once installing the gem run.
+### Minimal
+Minimal transponder modules are good for generating modules that will contain only services that will be used by other modules. Generally recommended to use in combination with the ```--shared`` flag
+
+    $ rails g transponder:install utilities -t minimal --shared
+
+### Basic
+Basic transponder modules come with 3 basic things, helpers, services, and presenters. If you want to work with rails controller you will need to use the basic module type.
 
     $ rails g transponder:install application
 
-or 
+### Full
+Full transponder modules come with transponder's primitives and placeholders for a backbone app, it will setup the integration for a backbone app into your transponder module.
 
-    $ rails g transponder:install application --full
+    $ rails g transponder:install application -t full
 
-You may be wondering whats the difference between the one with ```--full``` and the one without
-
-Basically there are 2 types of transponder apps basic one and a full one. A full one will give you models / collection / views / templates as well as transponder's own basic primitives.This means you can integrate backbone's primitives into transponder. So if your planning on doing very complex client side stuff and would like to use backbone as well use the ```--full``` flag to generate all the right folders.
+## Primitives
 
 ### Presenters
 Presenter's jobs are to take the response from the server usually html fragment that is rendered by rails and output it to the screen. The reason why we have presenters is so that we can do things to the content before outputting it.
