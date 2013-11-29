@@ -1,4 +1,4 @@
-Transponder.services_manifest = ->
+<%= file_name.camelize %>.services_manifest = ->
   # fill in your manifest here
   # example:
   # if you want to trigger a service on your entire app
@@ -21,8 +21,8 @@ Transponder.services_manifest = ->
   #    body.photos.index').trigger '<%= file_name.downcase %>:services:service_name'
   # 
 
-run_ready = ->
-  Transponder.services_manifest()
+<%= file_name.camelize %>.run_ready = ->
+  <%= file_name.camelize %>.services_manifest()
 
-$(document).ready run_ready
-$(document).on 'page:load', run_ready
+$(document).ready <%= file_name.camelize %>.run_ready
+$(document).on 'page:load', <%= file_name.camelize %>.run_ready
