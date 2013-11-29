@@ -3,16 +3,16 @@ require 'generators/transponder'
 module Transponder
   module Generators
     class InstallGenerator < Base
-      class_option :full,   type: :boolean, default: false
+      class_option :type,   type: :string, default: 'basic', desc: "type of app to generate"
       class_option :shared, type: :boolean, default: false
  
       def create_application
-        directory "#{app_type}",     "app/assets/javascripts/#{file_name}"
+        directory "#{type}",     "app/assets/javascripts/#{file_name}"
       end
 
       def add_setup
-        setup_type = options[:full] ? "#{app_type}_setup" : "#{app_type}_setup"
-        template "#{setup_type}.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
+        setup_type = options[:full] ? "#{type}_setup" : "#{type}_setup"
+        template "#{type}.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
       end
 
       def add_manifest
@@ -20,15 +20,11 @@ module Transponder
       end
 
       def add_shared
-        template "#{app_type}_shared.coffee", "app/assets/javascripts/#{file_name}/#{file_name}.coffee" if options[:shared]
+        template "#{type}_shared.coffee", "app/assets/javascripts/#{file_name}/#{file_name}.coffee" if options[:shared]
       end
 
       def add_application
-        template "#{app_type}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
-      end
-
-      def app_type
-        options[:full] ? 'full' : 'basic'
+        template "#{type}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
     end
   end
