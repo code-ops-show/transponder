@@ -23,7 +23,7 @@ Or install it yourself as:
 
 Once installing the gem run.
 
-    $ rails g transponder:install
+    $ rails g transponder:install application
 
 ### Presenters
 Presenter's jobs are to take the response from the server usually html fragment that is rendered by rails and output it to the screen. The reason why we have presenters is so that we can do things to the content before outputting it.
