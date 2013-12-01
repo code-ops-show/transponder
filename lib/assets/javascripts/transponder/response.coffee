@@ -8,5 +8,5 @@ class Transponder.Response
         element    = @payload.raw[0]
         event_name = @payload.raw[1]
         content    = @payload.raw[2]
-        
-        $(element).trigger("ujs:#{event_name}", content)
+
+        $(element).trigger(event_name, content)
