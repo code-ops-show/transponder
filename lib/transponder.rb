@@ -19,7 +19,7 @@ module Transponder
   end
 
   class Engine < ::Rails::Engine
-
+    # so transponder.coffee works with assets pipeline
   end
 end
 ActionView::Base.send :include, Transponder::ViewHelpers
