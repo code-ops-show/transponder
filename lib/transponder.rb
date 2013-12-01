@@ -1,7 +1,7 @@
 require 'active_support'
 require 'active_support/concern'
 require 'active_support/log_subscriber'
-require 'action_view/base/helpers'
+require 'action_view/helpers'
 require 'action_view/base'
 require 'rails'
 
