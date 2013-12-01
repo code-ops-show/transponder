@@ -1,7 +1,14 @@
 require 'transponder/version'
+require 'transponder/transmission'
 require 'rails'
 
 module Transponder
-  class Engine < Rails::Engine
+  module ViewHelpers
+
+  end
+
+  class Engine < ::Rails::Engine
+
   end
 end
+ActionView::Base.send :include, Transponder::ViewHelpers

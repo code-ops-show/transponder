@@ -3,7 +3,7 @@ class Transponder.Presenter
   params: {}
 
   presenterName: null
-  nameSpace: null
+  module: null
   modelName: null
 
   element: null
@@ -11,13 +11,13 @@ class Transponder.Presenter
 
   constructor: (options = {}) ->
     options.presenterName = @presenterName  unless options.presenterName
-    options.nameSpace =     @nameSpace      unless options.nameSpace
+    options.module =        @module         unless options.module
     options.actions =       @actions        unless options.actions
 
     doc = $(document)
     events = []
     for action in options.actions
-      events.push(Transponder.buildEvent(['ujs', options.nameSpace, options.presenterName, action]))
+      events.push(Transponder.buildEvent(['ujs', options.module, options.presenterName, action]))
     doc.on(events.join(' '), @runAction)
 
   elify: (event, response) ->
