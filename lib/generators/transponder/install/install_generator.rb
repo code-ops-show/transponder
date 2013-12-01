@@ -19,11 +19,11 @@ module Transponder
       end
 
       def add_shared
-        template "#{options[:type]}_shared.coffee", "app/assets/javascripts/#{file_name}/#{file_name}.coffee" if options[:shared]
+        template "#{options[:type]}_shared.coffee", "app/assets/javascripts/#{file_name}/loader.coffee"
       end
 
       def add_module_file
-        template "#{options[:type]}.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
+        template "application.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
     end
   end
