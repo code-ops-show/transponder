@@ -1,4 +1,4 @@
-#= require initializers/setup
+#= require ./initializers/setup
 #= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./collections
@@ -6,5 +6,5 @@
 #= require_tree ./services
 #= require_tree ./helpers
 #= require_tree ./presenters
-#= require initializers/boot
-#= require initializers/manifest 
+#= require ./initializers/boot
+#= require ./initializers/manifest 
