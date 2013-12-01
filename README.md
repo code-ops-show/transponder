@@ -86,3 +86,6 @@ Services are very modular and they can be applied to multiple widgets in a page 
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## Credits
+Gem developed by [Zack Siri](http://github.com/zacksiri) of [Artellectual](http://www.artellectual.com)
+
