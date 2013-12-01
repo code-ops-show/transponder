@@ -1,5 +1,6 @@
 require 'transponder/version'
 require 'transponder/transmission'
+require 'action_view/base'
 require 'rails'
 
 module Transponder
