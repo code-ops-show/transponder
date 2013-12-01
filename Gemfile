@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do 
-  gem 'middleman', '~> 3.0.14'
-  gem "haml", "4.0.2"
+  gem 'middleman', '~> 3.2.0'
+  gem 'haml', '4.0.2'
+  gem 'rspec'
+  gem 'ammeter'
+  gem 'rails', '~> 3.2.13'
 end

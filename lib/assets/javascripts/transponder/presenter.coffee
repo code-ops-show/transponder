@@ -3,7 +3,7 @@ class Transponder.Presenter
   params: {}
 
   presenterName: null
-  nameSpace: null
+  module: null
   modelName: null
 
   element: null
@@ -11,13 +11,13 @@ class Transponder.Presenter
 
   constructor: (options = {}) ->
     options.presenterName = @presenterName  unless options.presenterName
-    options.nameSpace =     @nameSpace      unless options.nameSpace
+    options.module =        @module         unless options.module
     options.actions =       @actions        unless options.actions
 
     doc = $(document)
     events = []
     for action in options.actions
-      events.push(Transponder.buildEvent(['ujs', options.nameSpace, options.presenterName, action]))
+      events.push(Transponder.buildEvent(['ujs', options.module, options.presenterName, action]))
     doc.on(events.join(' '), @runAction)
 
   elify: (event, response) ->
@@ -45,8 +45,12 @@ class Transponder.Presenter
   triggerEmpty: (eventName) ->
     console.log "#{eventName} triggered! Override this action in your own presenter"
 
+  triggerEmptyError: (eventName) ->
+    console.log "Error #{eventName} triggered! Override this action in your own presenter"
+
   errorOut: ->
-    console.log "an error has occured!"
+    for key, value of @response.errors
+      @error[key](value)
 
   index: ->
     @triggerEmpty('Index')
@@ -62,3 +66,19 @@ class Transponder.Presenter
     @triggerEmpty('Create')
   destroy: ->
     @triggerEmpty('Destroy')
+
+  error:
+    index: ->
+      @triggerEmptyError('Index')
+    show: ->
+      @triggerEmptyError('Show')
+    new: ->
+      @triggerEmptyError('New')
+    edit: ->
+      @triggerEmptyError('Edit')
+    update: ->
+      @triggerEmptyError('Update')
+    create: ->
+      @triggerEmptyError('Create')
+    destroy: ->
+      @triggerEmptyError('Destroy')

@@ -1,33 +1,29 @@
 require 'generators/transponder'
-require 'generators/transponder/resource_helpers'
 
 module Transponder
   module Generators
     class InstallGenerator < Base
-      include Transponder::Generators::ResourceHelpers
-
-      def create_services
-        directory 'services',     'app/assets/javascripts/services'
-      end
-
-      def create_presenters
-        directory 'presenters',   'app/assets/javascripts/presenters'
-      end
-
-      def create_helpers
-        directory 'helpers',      'app/assets/javascripts/helpers'
-      end
-
-      def create_initializers
-        directory 'initializers', 'app/assets/javascripts/initializers'
+      class_option :type,   type: :string, default: 'basic', desc: "type of app to generate", aliases: "-t"
+      class_option :shared, type: :boolean, default: false
+ 
+      def create_module
+        directory "#{options[:type]}",     "app/assets/javascripts/#{file_name}"
       end
 
       def add_setup
-        template 'setup.coffee',    'app/assets/javascripts/initializers/setup.coffee'
-      end 
+        template "#{options[:type]}_setup.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
+      end
 
       def add_manifest
-        template 'manifest.coffee', 'app/assets/javascripts/initializers/manifest.coffee'
+        template "manifest.coffee", "app/assets/javascripts/#{file_name}/initializers/manifest.coffee" unless options[:shared]
+      end
+
+      def add_shared
+        template "#{options[:type]}_shared.coffee", "app/assets/javascripts/#{file_name}/loader.coffee"
+      end
+
+      def add_module_file
+        template "application.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
       end
     end
   end
