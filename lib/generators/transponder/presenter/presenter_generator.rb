@@ -6,7 +6,7 @@ module Transponder
       class_option :module_name, type: :string, aliases: '-m', default: 'application'
 
       def add_presenter
-        
+        template "_presenter.coffee", 
       end
     end
   end

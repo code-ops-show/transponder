@@ -46,7 +46,8 @@ class Transponder.Presenter
     console.log "#{eventName} triggered! Override this action in your own presenter"
 
   errorOut: ->
-    console.log "an error has occured!"
+    for key, value of @response.errors
+      @error[key](value)
 
   index: ->
     @triggerEmpty('Index')
