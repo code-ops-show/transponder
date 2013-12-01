@@ -45,6 +45,9 @@ class Transponder.Presenter
   triggerEmpty: (eventName) ->
     console.log "#{eventName} triggered! Override this action in your own presenter"
 
+  triggerEmptyError: (eventName) ->
+    console.log "Error #{eventName} triggered! Override this action in your own presenter"
+
   errorOut: ->
     for key, value of @response.errors
       @error[key](value)
@@ -63,3 +66,19 @@ class Transponder.Presenter
     @triggerEmpty('Create')
   destroy: ->
     @triggerEmpty('Destroy')
+
+  error:
+    index: ->
+      @triggerEmptyError('Index')
+    show: ->
+      @triggerEmptyError('Show')
+    new: ->
+      @triggerEmptyError('New')
+    edit: ->
+      @triggerEmptyError('Edit')
+    update: ->
+      @triggerEmptyError('Update')
+    create: ->
+      @triggerEmptyError('Create')
+    destroy: ->
+      @triggerEmptyError('Destroy')
