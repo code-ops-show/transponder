@@ -1,9 +1,10 @@
+require 'rails'
 require 'active_support'
+require 'active_support/dependencies'
 require 'active_support/concern'
 require 'active_support/log_subscriber'
-require 'action_view/helpers'
+require 'action_view/helpers' 
 require 'action_view/base'
-require 'rails'
 
 require 'transponder/version'
 require 'transponder/transmission'
@@ -22,7 +23,6 @@ module Transponder
   end
 
   class Engine < ::Rails::Engine
-    # so transponder.coffee works with assets pipeline
+    ActionView::Base.send :include, Transponder::ViewHelpers
   end
 end
-ActionView::Base.send :include, Transponder::ViewHelpers
