@@ -1,5 +1,3 @@
-require 'active_support/concern'
-
 module Transponder
   module Transmission
     extend ActiveSupport::Concern

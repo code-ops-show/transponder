@@ -1,5 +1,7 @@
 require 'transponder/version'
 require 'transponder/transmission'
+require 'active_support/concern'
+require 'active_support/log_subscriber'
 require 'action_view/base'
 require 'rails'
 
