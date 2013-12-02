@@ -9,12 +9,10 @@ install:
   - bundle install
   - middleman build
 
-after_install:
-  - cd ../../../
-
 before_script: 
-  - chmod -R 777 ./test.sh
+  - cd ../../../
+  - chmod +x test.sh
 
-script: source test.sh
+script: ./test.sh
 
 

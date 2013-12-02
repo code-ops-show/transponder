@@ -1,2 +1,2 @@
-cd spec/javascripts/runner; npm test
-cd ../../../; bundle exec rspec .
+cd spec/javascripts/runner; pwd; npm test
+cd ../../../; rspec ./spec
