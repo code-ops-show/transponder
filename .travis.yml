@@ -9,6 +9,12 @@ install:
   - bundle install
   - middleman build
 
-script: npm test
+after_install:
+  - cd ../../../
+
+before_script: 
+  - chmod -R 777 test.sh
+
+script: source test.sh
 
 
