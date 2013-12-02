@@ -1,9 +1,9 @@
-//= require jquery-2
-//= require mocha
-//= require chai
-//= require chai-jquery
-//= require sinon
-//= require sinon-chai
+//= require vendor/jquery-2
+//= require vendor/mocha
+//= require vendor/chai
+//= require vendor/chai-jquery
+//= require vendor/sinon
+//= require vendor/sinon-chai
 //= require test_setup
 
 //= require transponder
