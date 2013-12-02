@@ -24,12 +24,12 @@ describe Transponder::Generators::PresenterGenerator do
 
     describe "comments_presenter.coffee" do 
       it { should exist }
-      it { should contain /CommentsPresenter/ }
+      it { should contain /Application.Presenters.CommentPresenter/ }
     end
 
     describe "initializers/boot.coffee" do 
       subject { file('app/assets/javascripts/application/initializers/boot.coffee') }
-      it { should contain /CommentsPresenter()/ }
+      it { should contain /Application.Presenters.CommentPresenter()/ }
     end
   end
 end
