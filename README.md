@@ -57,18 +57,7 @@ Presenters usually map to your controller action in rails. By default it support
 However you can override this and add your own custom presenter actions if you want. Its not necessary that the presenter action maps to your rails controller action.
 
 #### Presenter in Action
-Recently Homakov released a security vulnerbility regarding javascript code in .js.erb so I discussed this with him and managed to come up with a solution. 
 
-**NOTE This library was designed long before this vulnerability was unconvered** 
-
-I just found it interesting because transponder actually can't solve this problem. IMO pretty nicely. 
-
-Here is how it works
-
-Normally you would just have a index.js.erb with something like this
-```
-$('#something').replaceWith("<%= j render 'whatever' %>");
-```
 
 ### Services
 Services are things that apply to alot of items on the page. You could think of these parts of the page as 'widget' and they all have a certain kind of behavior. The behavior of these widgets can be defined by services. Each widget can have the behavior of multiple services.
