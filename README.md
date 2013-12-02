@@ -56,6 +56,9 @@ Presenters usually map to your controller action in rails. By default it support
 
 However you can override this and add your own custom presenter actions if you want. Its not necessary that the presenter action maps to your rails controller action.
 
+#### Presenter in Action
+
+
 ### Services
 Services are things that apply to alot of items on the page. You could think of these parts of the page as 'widget' and they all have a certain kind of behavior. The behavior of these widgets can be defined by services. Each widget can have the behavior of multiple services.
 

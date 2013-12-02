@@ -1,6 +1,7 @@
 # this is an example service for changing div colors
 class window.Calculate extends Transponder.Service
-  serviceName: 'ex:services:calculate'
+  serviceName: 'calculate'
+  module: 'ex'
   result: 0
 
   calculate: ->

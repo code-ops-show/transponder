@@ -49,7 +49,7 @@
 
 after_configuration do
   sprockets.append_path "#{root}/../../../lib/assets/javascripts"
-  sprockets.append_path "#{root}/../../../test/javascripts"
+  sprockets.append_path "#{root}/../../../spec/javascripts"
   sprockets.append_path "#{root}/../support"
   sprockets.append_path "#{root}/../../../examples"
   sprockets.append_path "#{root}/../transponder/fixtures"

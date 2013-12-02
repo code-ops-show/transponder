@@ -4,7 +4,9 @@ require 'active_support/dependencies'
 require 'active_support/concern'
 require 'active_support/log_subscriber'
 
-require 'action_view/asset_paths'
+if ::Rails.version.to_f < 4
+  require 'action_view/asset_paths'
+end
 require 'action_view/helpers' 
 require 'action_view/context'
 require 'action_view/base'

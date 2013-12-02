@@ -2,13 +2,17 @@ rvm:
   - 2.0.0
 
 before_install:
-  - cd test/javascripts/runner
+  - cd spec/javascripts/runner
 
 install:
   - npm install
   - bundle install
   - middleman build
 
-script: npm test
+before_script: 
+  - cd ../../../
+  - chmod +x test.sh
+
+script: ./test.sh
 
 
