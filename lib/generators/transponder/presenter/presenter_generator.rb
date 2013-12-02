@@ -14,7 +14,8 @@ module Transponder
       end
 
       def add_presenter_to_boot
-        insert_into_file "#{javascripts_path}#{options[:module_name]}/initializers/boot.coffee", 
+        boot_path = File.join(javascripts_path, options[:module_name, 'initializers/boot.coffee')
+        insert_into_file boot_path, 
                          "new #{presenter_class_name}()\n",
                          after: "# presenters\n"
       end

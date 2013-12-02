@@ -6,7 +6,7 @@ module Transponder
     class Base < Rails::Generators::NamedBase
 
       def javascripts_path
-        "app/assets/javascripts/"
+        "app/assets/javascripts"
       end
 
       def self.source_root

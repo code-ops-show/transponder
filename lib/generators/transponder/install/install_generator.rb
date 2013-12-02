@@ -5,25 +5,30 @@ module Transponder
     class InstallGenerator < Base
       class_option :type,   type: :string, default: 'basic', desc: "type of app to generate", aliases: "-t"
       class_option :shared, type: :boolean, default: false
+
+      def base_path(path = nil)
+        File.join([javascripts_path, file_name, path].compact)
+      end
  
       def create_module
-        directory "#{options[:type]}",     "app/assets/javascripts/#{file_name}"
+        directory "#{options[:type]}", base_path
       end
 
       def add_setup
-        template "#{options[:type]}_setup.coffee", "app/assets/javascripts/#{file_name}/initializers/setup.coffee"
+        template "#{options[:type]}_setup.coffee", base_path('initializers/setup.coffee')
       end
 
       def add_manifest
-        template "manifest.coffee", "app/assets/javascripts/#{file_name}/initializers/manifest.coffee" unless options[:shared]
+        template "manifest.coffee", base_path('initializers/manifest.coffee') unless options[:shared]
       end
 
       def add_shared
-        template "#{options[:type]}_shared.coffee", "app/assets/javascripts/#{file_name}/loader.coffee"
+        template "#{options[:type]}_shared.coffee", base_path('loader.coffee')
       end
 
       def add_module_file
-        template "application.coffee", "app/assets/javascripts/#{file_name}.coffee" unless options[:shared]
+        module_file = File.join(javascripts_path, "#{file_name}.coffee")
+        template "application.coffee", module_file unless options[:shared]
       end
     end
   end
