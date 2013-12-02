@@ -2,7 +2,7 @@ rvm:
   - 2.0.0
 
 before_install:
-  - cd test/javascripts/runner
+  - cd spec/javascripts/runner
 
 install:
   - npm install

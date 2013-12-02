@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/artellectual/transponder"
   gem.files         = `git ls-files -- lib/*`.split("\n")
   gem.files         += %w[README.md LICENSE]
-  gem.test_files    = Dir["test/**/*"]
+  gem.test_files    = Dir["spec/**/*"]
   # add license
   gem.license       = "MIT"
 
