@@ -80,8 +80,8 @@ describe Transponder::Generators::InstallGenerator do
       it { should contain /Services/   }
     end
 
-    describe "utilities/utilities.coffee" do 
-      subject { file('app/assets/javascripts/utilities/utilities.coffee') }
+    describe "utilities/loader.coffee" do 
+      subject { file('app/assets/javascripts/utilities/loader.coffee') }
       it { should exist }
     end
   end
