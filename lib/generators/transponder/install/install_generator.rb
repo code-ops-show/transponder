@@ -11,11 +11,11 @@ module Transponder
       end
  
       def create_module
-        directory "#{options[:type]}", base_path
+        directory "#{options[:type].downcase}", base_path
       end
 
       def add_setup
-        template "#{options[:type]}_setup.coffee", base_path('initializers/setup.coffee')
+        template "#{options[:type].downcase}_setup.coffee", base_path('initializers/setup.coffee')
       end
 
       def add_manifest
@@ -23,11 +23,11 @@ module Transponder
       end
 
       def add_shared
-        template "#{options[:type]}_shared.coffee", base_path('loader.coffee')
+        template "#{options[:type].downcase}_shared.coffee", base_path('loader.coffee')
       end
 
       def add_module_file
-        module_file = File.join(javascripts_path, "#{file_name}.coffee")
+        module_file = File.join(javascripts_path, "#{file_name.downcase}.coffee")
         template "application.coffee", module_file unless options[:shared]
       end
     end

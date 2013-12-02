@@ -6,7 +6,7 @@ module Transponder
       class_option :module_name, type: :string, aliases: '-m', default: 'application'
 
       def add_presenter
-        presenter_path = File.join(javascripts_path, options[:module_name], "presenters/#{file_name}_presenter.coffee")
+        presenter_path = File.join(javascripts_path, options[:module_name], "presenters/#{file_name.downcase}_presenter.coffee")
         template "_presenter.coffee", presenter_path
       end
 
