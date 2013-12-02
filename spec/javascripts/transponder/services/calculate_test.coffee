@@ -4,8 +4,8 @@ describe "Calculate", ->
   before ->
     @service = new Calculate()
 
-  it "should have serviceName 'ex:services:calculate'", ->
-    expect(@service.serviceName).to.equal('ex:services:calculate') 
+  it "should have serviceName 'calculate'", ->
+    expect(@service.serviceName).to.equal('calculate') 
 
   describe "#calculate", ->
     before ->
