@@ -28,6 +28,7 @@ describe Transponder::Generators::PresenterGenerator do
     end
 
     describe "initializers/boot.coffee" do 
+      subject { file('app/assets/javascripts/application/initializers/boot.coffee') }
       it { should contain /CommentsPresenter()/ }
     end
   end
