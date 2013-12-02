@@ -1,3 +1,3 @@
-class <%= options[:module_name].camelize %>.Presenters.<%= file_name.camelize %>Presenter extends Transponder.Presenter
+class <%= presenter_class_name %> extends Transponder.Presenter
   presenterName: '<%= file_name %>'
   module: '<%= options[:module_name] %>'
