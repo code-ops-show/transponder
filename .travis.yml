@@ -13,7 +13,7 @@ after_install:
   - cd ../../../
 
 before_script: 
-  - chmod -R 777 test.sh
+  - chmod -R 777 ./test.sh
 
 script: source test.sh
 
