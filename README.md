@@ -5,7 +5,7 @@
 
 Transponder is a opinionated javascript library for assisting in working with front end heavy rails app.
 
-Transponder uncompressed is about 8kb minified & compressed (gzip) its 2kb
+Transponder uncompressed is about 8kb uncompressed / 2kb minified & compressed (gzip) 
 
 ## Installation
 
