@@ -34,7 +34,7 @@ class Transponder.Presenter
   runAction: (event, response) =>
     @beforeFilter(event, response)
     if @response.errors
-      @errorOut()
+      @errorOut(@response.action)
     else    
       @[event.type.split(':').pop()]()
     @afterFilter(event, response)
@@ -48,9 +48,9 @@ class Transponder.Presenter
   triggerEmptyError: (eventName) ->
     console.log "Error #{eventName} triggered! Override this action in your own presenter"
 
-  errorOut: ->
+  errorOut: (action) ->
     for key, value of @response.errors
-      @error[key](value)
+      @error[action](value)
 
   index: ->
     @triggerEmpty('Index')
