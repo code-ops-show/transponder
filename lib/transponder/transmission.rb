@@ -5,11 +5,11 @@ module Transponder
     included do 
       after_filter :intercept_js
 
-      def xms_errors object, message: nil
-        render json: { errors: (message || object.errors), 
+      def xms_error message: nil, action: nil
+        render json: { errors: message || 'no error message passed', 
                        controller: controller_name, 
-                       action: action_name, 
-                       namespace: params[:controller].split('/')[0] }, status: :unprocessable_entity
+                       action: action || action_name, 
+                       module: (params[:controller].include?('/') ? params[:controller].split('/')[0] : nil) }, status: :unprocessable_entity
       end
 
       def intercept_js
