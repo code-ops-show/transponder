@@ -22,7 +22,7 @@ class Transponder.Presenter
 
   elify: (event, response) ->
     if @response.errors
-      if @response.id then "##{@modelName}_#{@response.id}" else "#new_#{@modelName}"
+      if @response.id then "##{@response.model_name}_#{@response.id}" else "#new_#{@response.model_name}"
     else 
       "#{event.target.localName}##{event.target.id}"
 
