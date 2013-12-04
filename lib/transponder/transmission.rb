@@ -8,7 +8,7 @@ module Transponder
     end
 
     def xms_module_name
-      params[:controller].include?('/') ? params[:controller].split('/')[0] : nil
+      params[:controller].include?('/') ? params[:controller].split('/')[0] : 'application'
     end
 
     def xms_error_hash(object, message, action, module_name)
