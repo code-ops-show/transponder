@@ -22,7 +22,7 @@ class Transponder.Presenter
 
   elify: (event, response) ->
     if @response.errors
-      if @response.id then "##{@modelName}_#{@response.id}" else "#new_#{@modelName}"
+      if @response.id then "##{@response.model_name}_#{@response.id}" else "#new_#{@response.model_name}"
     else 
       "#{event.target.localName}##{event.target.id}"
 
@@ -34,7 +34,7 @@ class Transponder.Presenter
   runAction: (event, response) =>
     @beforeFilter(event, response)
     if @response.errors
-      @errorOut()
+      @errorOut(@response.action)
     else    
       @[event.type.split(':').pop()]()
     @afterFilter(event, response)
@@ -45,12 +45,10 @@ class Transponder.Presenter
   triggerEmpty: (eventName) ->
     console.log "#{eventName} triggered! Override this action in your own presenter"
 
-  triggerEmptyError: (eventName) ->
-    console.log "Error #{eventName} triggered! Override this action in your own presenter"
 
-  errorOut: ->
-    for key, value of @response.errors
-      @error[key](value)
+
+  errorOut: (action) ->
+    @error[action](@response.errors, @element)
 
   index: ->
     @triggerEmpty('Index')
@@ -68,17 +66,20 @@ class Transponder.Presenter
     @triggerEmpty('Destroy')
 
   error:
-    index: ->
+    triggerEmptyError: (eventName) ->
+      console.log "Error #{eventName} triggered! Override this action in your own presenter"
+
+    index: (errors, element) ->
       @triggerEmptyError('Index')
-    show: ->
+    show: (errors, element) ->
       @triggerEmptyError('Show')
-    new: ->
+    new: (errors, element) ->
       @triggerEmptyError('New')
-    edit: ->
+    edit: (errors, element) ->
       @triggerEmptyError('Edit')
-    update: ->
+    update: (errors, element) ->
       @triggerEmptyError('Update')
-    create: ->
+    create: (errors, element) ->
       @triggerEmptyError('Create')
-    destroy: ->
+    destroy: (errors, element) ->
       @triggerEmptyError('Destroy')
