@@ -28,10 +28,9 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="transponder" class="anchor" href="#transponder"><span class="octicon octicon-link"></span></a>Transponder</h1>
+        <p><img src="http://transponder.s3-ap-northeast-1.amazonaws.com/transponder-banner.png" alt="Transponder Banner"></p>
 
-<p>Transponder uncompressed is about 8kb uncompressed / 2kb minified &amp; compressed (gzip) </p>
+<p>8kb uncompressed / 2kb minified &amp; compressed (gzip) (client side library)</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -52,78 +51,96 @@
 </code></pre>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a name="generate-a-basic-module" class="anchor" href="#generate-a-basic-module"><span class="octicon octicon-link"></span></a>Generate a basic Module</h2>
 
-<p>There are 3 types of transponder module, minimal, basic, full by using the <code>-t</code> flag you can specify which type you want to use. If you don't specify a <code>-t</code> flag it will generate a basic module.</p>
+<p>A transponder module provides some basic structure for your javascript code</p>
 
-<h3>
-<a name="minimal" class="anchor" href="#minimal"><span class="octicon octicon-link"></span></a>Minimal</h3>
-
-<p>Minimal transponder modules are good for generating modules that will contain only services that will be used by other modules. Generally recommended to use in combination with the <code>--shared</code> flag</p>
-
-<pre><code>$ rails g transponder:install utilities -t minimal --shared
+<pre><code>rails g transponder:install application
 </code></pre>
 
-<h3>
-<a name="basic" class="anchor" href="#basic"><span class="octicon octicon-link"></span></a>Basic</h3>
-
-<p>Basic transponder modules come with 3 basic things, helpers, services, and presenters. If you want to work with rails controller you will need to use the basic module type.</p>
-
-<pre><code>$ rails g transponder:install application
-</code></pre>
-
-<h3>
-<a name="full" class="anchor" href="#full"><span class="octicon octicon-link"></span></a>Full</h3>
-
-<p>Full transponder modules come with transponder's primitives and placeholders for a backbone app, it will setup the integration for a backbone app into your transponder module.</p>
-
-<pre><code>$ rails g transponder:install application -t full
-</code></pre>
+<p>This will generate a transponder 'module' in your <code>app/assets/javascripts</code> folder by the name of 'application', you can change the <code>application</code> to something else, but we recommend sticking with defaults until you understand more about transponder.</p>
 
 <h2>
-<a name="primitives" class="anchor" href="#primitives"><span class="octicon octicon-link"></span></a>Primitives</h2>
+<a name="generate-a-presenter" class="anchor" href="#generate-a-presenter"><span class="octicon octicon-link"></span></a>Generate a Presenter</h2>
+
+<p>Presenters is perhaps one of the most important thing about Transponder, it allows you to use your server side templates in your client side code, cleanly and allows better reuseability of code.</p>
+
+<pre><code>rails g transponder:presenter contacts
+</code></pre>
+
+<p>Running this command will generate a presenter in your Transponder module <code>application/presenters</code> with the name <code>contacts_presenter.coffee</code></p>
+
+<h2>
+<a name="how-is-this-better-than-rails-ujs" class="anchor" href="#how-is-this-better-than-rails-ujs"><span class="octicon octicon-link"></span></a>How is this better than Rails UJS?</h2>
+
+<p>Typically with Rails UJS you would create a view with something like this </p>
+
+<p>Lets say you have a basic contacts_controller.rb</p>
+
+<div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">ContactsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">respond_to</span> <span class="ss">:json</span><span class="p">,</span> <span class="ss">:html</span><span class="p">,</span> <span class="ss">:js</span>
+
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@contacts</span> <span class="o">=</span> <span class="no">Contact</span><span class="o">.</span><span class="n">all</span>
+    <span class="n">respond_with</span> <span class="vi">@contacts</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>In your <code>index.js.erb</code> you would then have something like this </p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#contacts'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"&lt;%= j render @contacts %&gt;"</span><span class="p">);</span>
+</pre></div>
+
+<p>This Javascript code is evaled in the browser and content of the node with the id <code>#contacts</code> gets replaced with server side template that came from <code>&lt;%= j render @contacts %&gt;</code> This is fine however it has a few problems. First of all if you use coffeescript it has to be compiled in real time as its responding which adds to your response time. Secondly if you want to do more complex things in your response things can get very messy. Code reuse isn't that great either.</p>
+
+<p>With Transponder you have a consistent way of working with your server side template. Lets take a look at the difference</p>
+
+<p>In your <code>index.js.erb</code> transponder version would look something like this.</p>
+
+<div class="highlight highlight-js"><pre><span class="p">[</span><span class="s2">"#contacts"</span><span class="p">,</span> <span class="s2">"&lt;%= xms_event %&gt;"</span><span class="p">,</span> <span class="s2">"&lt;%= j render @contacts %&gt;"</span><span class="p">]</span>
+</pre></div>
+
+<p>Your server side response code using transponder will mostly likely look something like this. There is consistency to it. The first element is the DOM node you want to manipulate, the second element is what will allow the client side Transponder code to know which Presenter is responsible for this response and lastly we have the server side generated content.</p>
 
 <h3>
-<a name="presenters" class="anchor" href="#presenters"><span class="octicon octicon-link"></span></a>Presenters</h3>
+<a name="so-what-happens-once-this-response-gets-to-the-client" class="anchor" href="#so-what-happens-once-this-response-gets-to-the-client"><span class="octicon octicon-link"></span></a>So what happens once this response gets to the client</h3>
 
-<p>Presenter's jobs are to take the response from the server usually html fragment that is rendered by rails and output it to the screen. The reason why we have presenters is so that we can do things to the content before outputting it.</p>
+<p>Well in our presenter we would do something like this </p>
 
-<p>Presenters usually map to your controller action in rails. By default it supports the 7 basic restful actions </p>
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">Application</span><span class="p">.</span><span class="nx">Presenters</span><span class="p">.</span><span class="nx">ContactsPresenter</span> <span class="k">extends</span> <span class="nx">Transponder</span><span class="p">.</span><span class="nx">Presenter</span>
+  <span class="nv">presenterName: </span><span class="s">'contacts'</span>
+  <span class="nv">module: </span><span class="s">'application'</span>
+
+  <span class="nv">index: </span><span class="nf">-&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">@element</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">@response</span><span class="p">)</span>
+    <span class="c1"># ... do more stuff ...</span>
+</pre></div>
+
+<p>The first 3 lines of code are generated by the presenter generator you were just using before the only line of code you should pay attention to here is the last 2. Basically the <code>@element</code> is the dom element you specified in <code>index.js.erb</code> and the <code>@response</code> is the content that was rendered by the server.</p>
+
+<p>In the presenter you can do pretty much anything you want to your response before it gets output to the DOM. This gives a nice structure and consistency to the whole pattern. It allows you to mix server side templates with full client side programmability.</p>
+
+<p>Testing is also much easier as now you've shifted the responsibility of the client side behavior to the client. We have more documentation coming on how to test your presenters.</p>
+
+<h2>
+<a name="typical-example" class="anchor" href="#typical-example"><span class="octicon octicon-link"></span></a>Typical Example</h2>
+
+<p>Here is a link to a more typical example with a controller / presenter that is more fleshed out. <a href="https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example">Presenters: Typical Example</a>. The code in the link is the controller / presenter code for this app here </p>
 
 <ul>
-<li>index</li>
-<li>new</li>
-<li>edit</li>
-<li>show</li>
-<li>create</li>
-<li>update</li>
-<li>destroy</li>
-</ul><p>However you can override this and add your own custom presenter actions if you want. Its not necessary that the presenter action maps to your rails controller action.</p>
-
-<h3>
-<a name="services" class="anchor" href="#services"><span class="octicon octicon-link"></span></a>Services</h3>
-
-<p>Services are things that apply to alot of items on the page. You could think of these parts of the page as 'widget' and they all have a certain kind of behavior. The behavior of these widgets can be defined by services. Each widget can have the behavior of multiple services.</p>
-
-<p>Some example of services</p>
-
-<ul>
-<li>File uploader</li>
-<li>Poller</li>
-<li>Push notification subscriber</li>
-<li>Syntax Highlighter</li>
-<li>Search Bar</li>
-</ul><p>Services are very modular and they can be applied to multiple widgets in a page without conflicting with each other and without rebinding widgets that already have these behaviors.</p>
+<li><a href="http://kontax.herokuapp.com">kontax on heroku</a></li>
+<li><a href="http://github.com/xpdr/kontax">kontax on github</a></li>
+</ul><p>Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines. Especially if you want to build apps that need real time stuff.</p>
 
 <h2>
 <a name="todo---whats-coming" class="anchor" href="#todo---whats-coming"><span class="octicon octicon-link"></span></a>TODO - Whats Coming</h2>
 
 <ul>
-<li>Clean up some APIs</li>
 <li>Add Documentation</li>
 <li>Video Screencasts</li>
-<li>More Generators</li>
-<li>Example Rails Project</li>
+<li>Add more features to Kontax</li>
+<li>More documentation on Services</li>
 </ul><h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
