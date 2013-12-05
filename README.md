@@ -98,6 +98,37 @@ In the presenter you can do pretty much anything you want to your response befor
 
 Testing is also much easier as now you've shifted the responsibility of the client side behavior to the client. We have more documentation coming on how to test your presenters.
 
+## Services
+
+Services are meant to be an easy way to manage functionality of a widget on a page. What does this mean? Generally we will have elements on the page that do more than just display information, they have to listen to some even like a mouse click or a tap and then act on that. They may have 1 simple functionality or multiple functions Services are a way to manage that, and make sure that all the widgets behaviour are not duplicated. If the service is applied to the page again. So Services are designed to be idempotent. you can run a service on a page repeatedly and it will not apply to the widgets that already have the same service applied. This can be very useful when working with pages that use pjax / turbolinks / single page apps etc...
+
+Lets have a look at an example service.
+
+```coffee
+class Application.Services.ContactsSearch extends Transponder.Service
+  serviceName: 'contacts_search'
+  module: 'application'
+
+  init: ->
+    search_field     = @element.find('#search-field')
+    search_field.on 'keyup', @submitSearch
+
+  search: _.debounce (=> 
+    $.ajax 
+      url: $('#search-field').parent().prop('action')
+      dataType: 'script'
+      data: 
+        query: $('#search-field').val()
+  ), 600
+
+  submitSearch: =>
+    @search()
+
+  serve: ->
+    @init()
+    # add your code here
+```
+
 ## Example App
 
 Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here 
