@@ -25,7 +25,7 @@ module Transponder
       def add_service_to_manifest
         manifest_file = File.join(javascripts_path, options[:module_name], 'initializers/manifest.coffee')
         insert_into_file manifest_file, 
-                         "  $(body).trigger '#{options[:module_name].downcase}:services:#{file_name.downcase}'\n",
+                         "  $('body').trigger '#{options[:module_name].downcase}:services:#{file_name.downcase}'\n",
                          after: "#{options[:module_name].camelize}.services_manifest = ->\n"
       end
     end
