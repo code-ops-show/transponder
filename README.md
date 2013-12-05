@@ -21,65 +21,91 @@ Or install it yourself as:
 
     $ gem install transponder
 
-## Usage
-There are 3 types of transponder module, minimal, basic, full by using the ```-t``` flag you can specify which type you want to use. If you don't specify a ```-t``` flag it will generate a basic module.
 
-### Minimal
-Minimal transponder modules are good for generating modules that will contain only services that will be used by other modules. Generally recommended to use in combination with the ```--shared``` flag
+## Generate a basic Module 
 
-    $ rails g transponder:install utilities -t minimal --shared
+A transponder module provides some basic structure for your javascript code
+```
+rails g transponder:install application
+```
+This will generate a transponder 'module' in your ```app/assets/javascripts``` folder by the name of 'application', you can change the ```application``` to something else, but we recommend sticking with defaults until you understand more about transponder.
 
-### Basic
-Basic transponder modules come with 3 basic things, helpers, services, and presenters. If you want to work with rails controller you will need to use the basic module type.
+## Generate a Presenter
 
-    $ rails g transponder:install application
+Presenters is perhaps one of the most important thing about Transponder, it allows you to use your server side templates in your client side code, cleanly and allows better reuseability of code.
 
-### Full
-Full transponder modules come with transponder's primitives and placeholders for a backbone app, it will setup the integration for a backbone app into your transponder module.
+```
+rails g transponder:presenter contacts
+```
 
-    $ rails g transponder:install application -t full
-
-## Primitives
-
-### Presenters
-Presenter's jobs are to take the response from the server usually html fragment that is rendered by rails and output it to the screen. The reason why we have presenters is so that we can do things to the content before outputting it.
-
-Presenters usually map to your controller action in rails. By default it supports the 7 basic restful actions 
-
-+ index
-+ new
-+ edit
-+ show
-+ create
-+ update
-+ destroy
-
-However you can override this and add your own custom presenter actions if you want. Its not necessary that the presenter action maps to your rails controller action.
-
-#### Presenter in Action
+Running this command will generate a presenter in your Transponder module ```application/presenters``` with the name ```contacts_presenter.coffee```
 
 
-### Services
-Services are things that apply to alot of items on the page. You could think of these parts of the page as 'widget' and they all have a certain kind of behavior. The behavior of these widgets can be defined by services. Each widget can have the behavior of multiple services.
+## How is this better than Rails UJS?
 
-Some example of services
+Typically with Rails UJS you would create a view with something like this 
 
-+ File uploader
-+ Poller
-+ Push notification subscriber
-+ Syntax Highlighter
-+ Search Bar
+Lets say you have a basic contacts_controller.rb
 
-Services are very modular and they can be applied to multiple widgets in a page without conflicting with each other and without rebinding widgets that already have these behaviors.
+```ruby
+class ContactsController < ApplicationController
+  respond_to :json, :html, :js
 
+  def index
+    @contacts = Contact.all
+    respond_with @contacts
+  end
+end
+```
+
+In your ```index.js.erb``` you would then have something like this 
+
+```js
+$('#contacts').html("<%= j render @contacts %>");
+```
+
+This Javascript code is evaled in the browser and content of the node with the id ```#contacts``` gets replaced with server side template that came from ```<%= j render @contacts %>``` This is fine however it has a few problems. First of all if you use coffeescript it has to be compiled in real time as its responding which adds to your response time. Secondly if you want to do more complex things in your response things can get very messy. Code reuse isn't that great either.
+
+With Transponder you have a consistent way of working with your server side template. Lets take a look at the difference
+
+In your ```index.js.erb``` transponder version would look something like this.
+
+```js
+["#contacts", "<%= xms_event %>", "<%= j render @contacts %>"]
+```
+
+Your server side response code using transponder will mostly likely look something like this. There is consistency to it. The first element is the DOM node you want to manipulate, the second element is what will allow the client side Transponder code to know which Presenter is responsible for this response and lastly we have the server side generated content.
+
+### So what happens once this response gets to the client
+
+Well in our presenter we would do something like this 
+
+```coffee
+class Application.Presenters.ContactsPresenter extends Transponder.Presenter
+  presenterName: 'contacts'
+  module: 'application'
+
+  index: ->
+    $(@element).html(@response)
+```
+
+The first 3 lines of code are generated by the presenter generator you were just using before the only line of code you should pay attention to here is the last 2. Basically the ```@element``` is the dom element you specified in ```index.js.erb``` and the ```@response``` is the content that was rendered by the server.
+
+In the presenter you can do pretty much anything you want to your response before it gets output to the DOM. This gives a nice structure and consistency to the whole pattern. It allows you to mix server side templates with full client side programmability.
+
+Testing is also much easier as now you've shifted the responsibility of the client side behavior to the client. We have more documentation coming on how to test your presenters.
+
+## Typical Example
+
+Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here [kontax on heroku](http://kontax.herokuapp.com)
+
+Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines.
 
 ## TODO - Whats Coming
 
-  + Clean up some APIs
   + Add Documentation
   + Video Screencasts
-  + More Generators
-  + Example Rails Project
+  + Add more features to Kontax
 
 ## Contributing
 
