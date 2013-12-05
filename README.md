@@ -97,7 +97,9 @@ Testing is also much easier as now you've shifted the responsibility of the clie
 
 ## Typical Example
 
-Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here [kontax on heroku](http://kontax.herokuapp.com)
+Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here 
++ [kontax on heroku](http://kontax.herokuapp.com)
++ [kontax on github](http://github.com/xpdr/kontax)
 
 Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines.
 
