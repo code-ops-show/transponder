@@ -106,6 +106,7 @@ Kontax is an example app for showcasing what Transponder is capable of doing. Th
   + Add Documentation
   + Video Screencasts
   + Add more features to Kontax
+  + More documentation on Services
 
 ## Contributing
 
