@@ -2,7 +2,7 @@ class Transponder.Response
   payload: {}
 
   constructor: ->
-    $(document).on 'ajax:complete', (event, xhr, status) =>
+    $(document).ajaxComplete (event, xhr, status) =>
       if xhr.getResponseHeader('Content-Type') is 'application/transmission'
         @payload.raw = JSON.parse(@cleanContent(xhr.responseText))
         element    = @payload.raw[0]
