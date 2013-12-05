@@ -106,7 +106,48 @@ Generally we will have elements on the page that do more than just display infor
 
 Services are designed to be idempotent. You can run a service on a page repeatedly and it will not apply to the widgets that already have the same service applied. This can be very useful when working with pages that use pjax / turbolinks / single page apps etc...
 
-Lets have a look at an example service.
+### Service Generator
+
+To generate a service simply type
+
+```
+rails g transponder:service contacts_search
+```
+
+In our `initializers/manifest.coffee` file we have something like this 
+
+```coffee
+Application.services_manifest = ->
+  $('body').trigger 'application:services:contacts_search'
+```
+
+Basically we want to trigger this service on the page. Since we're using 'body' as the element the service will run on every page. If we apply a class to the html ```<body>``` tag to something like this in our application layout file ```<body class="<%= controller_name %> <%= action_name %>"``` we can trigger specific services on specific pages.
+
+For example if we're on the controller index page and we want to trigger the contacts search only when we're on that page we can do something like this
+```coffee
+Application.services_manifest = ->
+  $('body.contacts.index').trigger 'application:services:contacts_search'
+```
+This gives us very fine grained control as to which services should run on which pages.
+
+We have this in our erb some where on our page
+
+```html
+<%= form_tag contacts_path, class: 'navbar-form navbar-left contacts_search', remote: true do %>
+  <div class='form-group'>
+    <%= text_field_tag :query, nil,class: 'form-control', placeholder: "Search for someone", id: 'search-field' %>
+  </div>
+<% end %>
+```
+which renders down to 
+```html
+<form accept-charset="UTF-8" action="/contacts" class="navbar-form navbar-left contacts_search contacts_search_active" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+  <div class="form-group">
+    <input class="form-control" id="search-field" name="query" placeholder="Search for someone" type="text">
+  </div>
+</form>
+```
+The service will detect the element on the page with the matching class to the ```serviceName:``` and apply the behavior to those elements.
 
 ```coffee
 class Application.Services.ContactsSearch extends Transponder.Service
@@ -114,28 +155,30 @@ class Application.Services.ContactsSearch extends Transponder.Service
   module: 'application'
 
   init: ->
-    search_field     = @element.find('#search-field')
-    search_field.on 'keyup', @submitSearch
+    @element.on 'keyup', "#search-field", @submitSearch
 
-  search: _.debounce (=> 
+  search: _.debounce ( (e) -> 
+    field = @element.find('#search-field')
     $.ajax 
-      url: $('#search-field').parent().prop('action')
+      url: @element.prop('action')
       dataType: 'script'
       data: 
-        query: $('#search-field').val()
+        query: field.val()
   ), 600
 
-  submitSearch: =>
-    @search()
+  submitSearch: (field) =>
+    @search(field)
 
   serve: ->
     @init()
-    # add your code here
 ```
 
 ## Example App
 
-Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here 
+The code above is taken from the example app [Kontax](http://kontax.herokuapp.com)
+
+You can review the Kontax app for a full picture of how all the pieces fit together.
+
 + [kontax on heroku](http://kontax.herokuapp.com)
 + [kontax on github](http://github.com/xpdr/kontax)
 
