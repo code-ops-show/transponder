@@ -30,6 +30,8 @@
       <section>
         <p><img src="http://transponder.s3-ap-northeast-1.amazonaws.com/transponder-banner.png" alt="Transponder Banner"></p>
 
+<p>Transponder is a opinionated library for assisting in working with front end heavy rails app.</p>
+
 <p>8kb uncompressed / 2kb minified &amp; compressed (gzip) (client side library)</p>
 
 <h2>
@@ -124,9 +126,87 @@
 <p>Testing is also much easier as now you've shifted the responsibility of the client side behavior to the client. We have more documentation coming on how to test your presenters.</p>
 
 <h2>
+<a name="services" class="anchor" href="#services"><span class="octicon octicon-link"></span></a>Services</h2>
+
+<p>Services are meant to be an easy way to manage functionality of a widget on a page. What does this mean? </p>
+
+<p>Generally we will have elements on the page that do more than just display information, they have to listen to some even like a mouse click or a tap and then act on that. They may have 1 simple functionality or multiple functions Services are a way to manage that. </p>
+
+<p>Services are designed to be idempotent. You can run a service on a page repeatedly and it will not apply to the widgets that already have the same service applied. This can be very useful when working with pages that use pjax / turbolinks / single page apps etc...</p>
+
+<h3>
+<a name="service-generator" class="anchor" href="#service-generator"><span class="octicon octicon-link"></span></a>Service Generator</h3>
+
+<p>To generate a service simply type</p>
+
+<pre><code>rails g transponder:service contacts_search
+</code></pre>
+
+<p>In our <code>initializers/manifest.coffee</code> file we have something like this </p>
+
+<div class="highlight highlight-coffee"><pre><span class="nv">Application.services_manifest = </span><span class="nf">-&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s">'body'</span><span class="p">).</span><span class="nx">trigger</span> <span class="s">'application:services:contacts_search'</span>
+</pre></div>
+
+<p>Basically we want to trigger this service on the page. Since we're using 'body' as the element the service will run on every page. If we apply a class to the html <code>&lt;body&gt;</code> tag to something like this in our application layout file <code>&lt;body class="&lt;%= controller_name %&gt; &lt;%= action_name %&gt;"</code> we can trigger specific services on specific pages.</p>
+
+<p>For example if we're on the controller index page and we want to trigger the contacts search only when we're on that page we can do something like this</p>
+
+<div class="highlight highlight-coffee"><pre><span class="nv">Application.services_manifest = </span><span class="nf">-&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s">'body.contacts.index'</span><span class="p">).</span><span class="nx">trigger</span> <span class="s">'application:services:contacts_search'</span>
+</pre></div>
+
+<p>This gives us very fine grained control as to which services should run on which pages.</p>
+
+<p>We have this in our erb some where on our page</p>
+
+<div class="highlight highlight-html"><pre><span class="err">&lt;</span>%= form_tag contacts_path, class: 'navbar-form navbar-left contacts_search', remote: true do %&gt;
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'form-group'</span><span class="nt">&gt;</span>
+    <span class="err">&lt;</span>%= text_field_tag :query, nil,class: 'form-control', placeholder: "Search for someone", id: 'search-field' %&gt;
+  <span class="nt">&lt;/div&gt;</span>
+<span class="err">&lt;</span>% end %&gt;
+</pre></div>
+
+<p>which renders down to </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;form</span> <span class="na">accept-charset=</span><span class="s">"UTF-8"</span> <span class="na">action=</span><span class="s">"/contacts"</span> <span class="na">class=</span><span class="s">"navbar-form navbar-left contacts_search contacts_search_active"</span> <span class="na">data-remote=</span><span class="s">"true"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;&lt;div</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;display:inline"</span><span class="nt">&gt;&lt;input</span> <span class="na">name=</span><span class="s">"utf8"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"✓"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"search-field"</span> <span class="na">name=</span><span class="s">"query"</span> <span class="na">placeholder=</span><span class="s">"Search for someone"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+
+<p>The service will detect the element on the page with the matching class to the <code>serviceName:</code> and apply the behavior to those elements.</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">Application</span><span class="p">.</span><span class="nx">Services</span><span class="p">.</span><span class="nx">ContactsSearch</span> <span class="k">extends</span> <span class="nx">Transponder</span><span class="p">.</span><span class="nx">Service</span>
+  <span class="nv">serviceName: </span><span class="s">'contacts_search'</span>
+  <span class="nv">module: </span><span class="s">'application'</span>
+
+  <span class="nv">init: </span><span class="nf">-&gt;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">on</span> <span class="s">'keyup'</span><span class="p">,</span> <span class="s">"</span><span class="err">#</span><span class="s">search-field"</span><span class="p">,</span> <span class="nx">@submitSearch</span>
+
+  <span class="nv">search: </span><span class="nx">_</span><span class="p">.</span><span class="nx">debounce</span> <span class="p">(</span> <span class="nf">(e) -&gt;</span> 
+    <span class="nv">field = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">'#search-field'</span><span class="p">)</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span> 
+      <span class="nv">url: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">prop</span><span class="p">(</span><span class="s">'action'</span><span class="p">)</span>
+      <span class="nv">dataType: </span><span class="s">'script'</span>
+      <span class="nv">data: </span>
+        <span class="nv">query: </span><span class="nx">field</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span>
+  <span class="p">),</span> <span class="mi">600</span>
+
+  <span class="nv">submitSearch: </span><span class="nf">(field) =&gt;</span>
+    <span class="nx">@search</span><span class="p">(</span><span class="nx">field</span><span class="p">)</span>
+
+  <span class="nv">serve: </span><span class="nf">-&gt;</span>
+    <span class="nx">@init</span><span class="p">()</span>
+</pre></div>
+
+<h2>
 <a name="example-app" class="anchor" href="#example-app"><span class="octicon octicon-link"></span></a>Example App</h2>
 
-<p>Here is a link to a more typical example with a controller / presenter that is more fleshed out. <a href="https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example">Presenters: Typical Example</a>. The code in the link is the controller / presenter code for this app here </p>
+<p>The code above is taken from the example app <a href="http://kontax.herokuapp.com">Kontax</a></p>
+
+<p>You can review the Kontax app for a full picture of how all the pieces fit together.</p>
 
 <ul>
 <li><a href="http://kontax.herokuapp.com">kontax on heroku</a></li>
