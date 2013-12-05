@@ -100,7 +100,11 @@ Testing is also much easier as now you've shifted the responsibility of the clie
 
 ## Services
 
-Services are meant to be an easy way to manage functionality of a widget on a page. What does this mean? Generally we will have elements on the page that do more than just display information, they have to listen to some even like a mouse click or a tap and then act on that. They may have 1 simple functionality or multiple functions Services are a way to manage that, and make sure that all the widgets behaviour are not duplicated. If the service is applied to the page again. So Services are designed to be idempotent. you can run a service on a page repeatedly and it will not apply to the widgets that already have the same service applied. This can be very useful when working with pages that use pjax / turbolinks / single page apps etc...
+Services are meant to be an easy way to manage functionality of a widget on a page. What does this mean? 
+
+Generally we will have elements on the page that do more than just display information, they have to listen to some even like a mouse click or a tap and then act on that. They may have 1 simple functionality or multiple functions Services are a way to manage that. 
+
+Services are designed to be idempotent. You can run a service on a page repeatedly and it will not apply to the widgets that already have the same service applied. This can be very useful when working with pages that use pjax / turbolinks / single page apps etc...
 
 Lets have a look at an example service.
 
