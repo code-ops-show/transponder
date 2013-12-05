@@ -98,7 +98,7 @@ In the presenter you can do pretty much anything you want to your response befor
 
 Testing is also much easier as now you've shifted the responsibility of the client side behavior to the client. We have more documentation coming on how to test your presenters.
 
-## Typical Example
+## Example App
 
 Here is a link to a more typical example with a controller / presenter that is more fleshed out. [Presenters: Typical Example](https://github.com/xpdr/transponder/wiki/Presenters:-Typical-Example). The code in the link is the controller / presenter code for this app here 
 + [kontax on heroku](http://kontax.herokuapp.com)
