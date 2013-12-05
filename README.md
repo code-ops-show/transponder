@@ -101,7 +101,7 @@ Here is a link to a more typical example with a controller / presenter that is m
 + [kontax on heroku](http://kontax.herokuapp.com)
 + [kontax on github](http://github.com/xpdr/kontax)
 
-Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines.
+Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines. Especially if you want to build apps that need real time stuff.
 
 ## TODO - Whats Coming
 
