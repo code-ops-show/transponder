@@ -13,13 +13,21 @@ module Transponder
 
     def xms_error_hash(object, message, action, module_name)
       { 
-        errors: (message || object.errors ), 
+        errors: (message || xms_error_partial || object.errors ), 
         controller: controller_name, 
         action: (action || action_name), 
         model_name: object.class.name.downcase,
         id: object.id,
         module: (module_name || xms_module_name) 
       }
+    end
+
+    def xms_error_partial(module_name: nil, action: nil, controller: nil)
+      render_to_string [(module_name || xms_module_name), 
+                        (controller || controller_name), 'errors', 
+                        (action || action_name)].join('/'), layout: false
+    rescue ActionView::MissingTemplate
+      nil
     end
 
     def xms_error  object, message: nil, action: nil, module_name: nil

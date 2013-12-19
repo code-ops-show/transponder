@@ -12,7 +12,7 @@ module Transponder
 
 
       def service_class_name
-        "#{options[:module_name].camelize}.Services.#{file_name.classify}"
+        "#{options[:module_name].camelize}.Services.#{file_name.titleize}"
       end
 
       def add_service_to_boot
