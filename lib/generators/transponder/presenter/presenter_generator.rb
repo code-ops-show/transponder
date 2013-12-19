@@ -11,7 +11,7 @@ module Transponder
       end
 
       def presenter_class_name
-        "#{options[:module_name].camelize}.Presenters.#{file_name.titleize}Presenter"
+        "#{options[:module_name].camelize}.Presenters.#{file_name.camelize}Presenter"
       end
 
       def add_presenter_to_boot
