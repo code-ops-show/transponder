@@ -1,7 +1,7 @@
 # Transponder
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png)](https://coveralls.io/r/xpdr/transponder) Master (current release)
+[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) Master (current release)
 
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) - Develop (upcoming release)
+[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png?branch=develop)](https://coveralls.io/r/xpdr/transponder?branch=develop) Develop (upcoming release)
 
 ![Transponder Banner](http://transponder.s3-ap-northeast-1.amazonaws.com/transponder-banner.png)
 
