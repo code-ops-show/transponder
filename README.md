@@ -179,17 +179,6 @@ class Application.Services.ContactsSearch extends Transponder.Service
     @init()
 ```
 
-## Example App
-
-The code above is taken from the example app [Kontax](http://kontax.herokuapp.com)
-
-You can review the Kontax app for a full picture of how all the pieces fit together.
-
-+ [kontax on heroku](http://kontax.herokuapp.com)
-+ [kontax on github](http://github.com/xpdr/kontax)
-
-Kontax is an example app for showcasing what Transponder is capable of doing. The larger and more complex an app becomes the more transponder shines. Especially if you want to build apps that need real time stuff.
-
 ## TODO - Whats Coming
 
   + Add Documentation
