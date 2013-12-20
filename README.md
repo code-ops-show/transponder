@@ -1,5 +1,5 @@
 # Transponder
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) | [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) Master (current release)
+[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) Master (current release)
 
 [![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) - Develop (upcoming release)
 
