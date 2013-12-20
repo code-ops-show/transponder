@@ -1,13 +1,19 @@
 # Transponder
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png?branch=develop)](https://coveralls.io/r/xpdr/transponder?branch=develop) Master (current release)
-
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder)Develop (upcoming release)
+[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=master)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png?branch=develop)](https://coveralls.io/r/xpdr/transponder?branch=develop)
 
 ![Transponder Banner](http://transponder.s3-ap-northeast-1.amazonaws.com/transponder-banner.png)
 
 Transponder is a opinionated library for assisting in working with front end heavy rails app.
 
 8kb uncompressed / 2kb minified & compressed (gzip) (client side library)
+
+## Example App Using Transponder
+
++ [Kontax App](http://kontax.herokuapp.com)
++ [Kontax Github](http://github.com/xpdr/kontax)
+
+Try opening the Kontax app in multiple browser and update something, and see how transponder's abstraction make this sort of thing very clean and easy for a rails app.
+
 
 ## Installation
 
