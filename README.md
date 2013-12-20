@@ -1,5 +1,5 @@
 # Transponder
-[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png?branch=develop)](https://coveralls.io/r/xpdr/transponder?branch=develop)
+[![Build Status](https://travis-ci.org/xpdr/transponder.png?branch=develop)](https://travis-ci.org/artellectual/transponder) [![Gem Version](https://badge.fury.io/rb/transponder.png)](http://badge.fury.io/rb/transponder) [![Coverage Status](https://coveralls.io/repos/xpdr/transponder/badge.png?branch=develop)](https://coveralls.io/r/xpdr/transponder?branch=develop) [![Code Climate](https://codeclimate.com/github/xpdr/transponder.png)](https://codeclimate.com/github/xpdr/transponder)
 
 ![Transponder Banner](http://transponder.s3-ap-northeast-1.amazonaws.com/transponder-banner.png)
 
