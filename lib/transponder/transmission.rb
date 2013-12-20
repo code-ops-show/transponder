@@ -24,8 +24,7 @@ module Transponder
 
     def xms_error_partial(module_name: nil, action: nil, controller: nil)
       render_to_string [(module_name || xms_module_name), 
-                        (controller || controller_name), 'errors', 
-                        (action || action_name)].join('/'), layout: false
+                        (controller || controller_name), 'errors'].join('/'), layout: false
     rescue ActionView::MissingTemplate
       nil
     end
