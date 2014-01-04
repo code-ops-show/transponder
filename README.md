@@ -201,3 +201,6 @@ Kontax is an example app for showcasing what Transponder is capable of doing. Th
 
 ## Credits
 Gem developed by [Zack Siri](http://github.com/zacksiri) of [Artellectual](http://www.artellectual.com)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/codemy/transponder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
