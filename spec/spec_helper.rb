@@ -5,6 +5,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rails/all'
+require 'coveralls'
+Coveralls.wear!
 
 module Transponder
   class Application < ::Rails::Application

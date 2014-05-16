@@ -10,4 +10,5 @@ group :test do
   gem 'ammeter'
   gem 'rails', '~> 3.2.13'
   gem 'pry'
+  gem 'coveralls', require: false
 end
