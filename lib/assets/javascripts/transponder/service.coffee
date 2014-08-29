@@ -7,12 +7,12 @@ class Transponder.Service
     throw new Transponder.InvalidService('no service name specified.') unless @serviceName?
     _this = this
     serviceEvent = "#{_this.module}:services:#{_this.serviceName}"
-    $(document).on serviceEvent, (e) ->
+    $(document).on serviceEvent, (e, message = {}) ->
       service = _this.serviceName
-      $(".#{service}:not(#{service}_active)").each (i, e) ->
+      $(".#{service}:not(#{service}_active)").each (i, f) ->
         _this.element = $(this)
         _this.element.addClass("#{service}_active")
-        _this.serve()
+        _this.serve(message)
 
 
   serve: ->
