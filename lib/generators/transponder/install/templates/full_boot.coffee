@@ -4,3 +4,4 @@
 
 
 # services
+Transponder.buildServicesFor(<%= file_name.camelize %>.Services)
