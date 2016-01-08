@@ -10,16 +10,8 @@ module Transponder
         template "_service.coffee", service_path
       end
 
-
       def service_class_name
         "#{options[:module_name].camelize}.Services.#{file_name.camelize}"
-      end
-
-      def add_service_to_boot
-        boot_file = File.join(javascripts_path, options[:module_name], 'initializers/boot.coffee')
-        insert_into_file boot_file, 
-                         "new #{service_class_name}()\n",
-                         after: "# services\n"
       end
 
       def add_service_to_manifest

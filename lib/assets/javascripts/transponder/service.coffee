@@ -9,6 +9,5 @@ class Transponder.Service
     @element.addClass("#{this.serviceName}_active")
     @serve(message)
     
-
   serve: ->
 

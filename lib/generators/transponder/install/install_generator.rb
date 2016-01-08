@@ -14,6 +14,10 @@ module Transponder
         directory "#{options[:type].downcase}", base_path
       end
 
+      def add_boot
+        template "#{options[:type].downcase}_boot.coffee", base_path('initializers/boot.coffee')
+      end
+
       def add_setup
         template "#{options[:type].downcase}_setup.coffee", base_path('initializers/setup.coffee')
       end
